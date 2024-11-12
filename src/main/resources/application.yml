@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: optimize-discovery-service
+    basedir: ${user.home}/.optimize/discovery-service
+    version: 1.0.0
+  cloud:
+    config:
+      enabled: false
+  config:
+    import: "optional:configserver:localhost:8888"
+
+eureka:
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+
+server:
+  port: 8761
+  http:
+    port: 8762
+  ssl:
+    enabled: false
+
+
+logging:
+  config: 'classpath:logback-spring.xml'
+  file:
+    path: ${spring.application.basedir}/logs
+  level:
+    org.springframework.cloud.commons.util.InetUtils: trace
